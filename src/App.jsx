@@ -18,18 +18,37 @@ import {
 import { FiCircle } from "react-icons/fi";
 
 function App() {
-  const randomColor1 = Math.floor(Math.random() * 16777215).toString(16);
-  const randomColor2 = Math.floor(Math.random() * 16777215).toString(16);
+  const randomColor1 = `#${(Math.random() * 0xfffff * 1000000)
+    .toString(16)
+    .slice(0, 6)}`;
+  const randomColor2 = `#${(Math.random() * 0xfffff * 1000000)
+    .toString(16)
+    .slice(0, 6)}`;
   const [textCSS, setTextCSS] = useState("");
   const [textLink, setTextLink] = useState("");
   const [radial, setRadial] = useState(false);
-  const [color1, setColor1] = useState("#" + randomColor1);
-  const [color2, setColor2] = useState("#" + randomColor2);
+  const [color1, setColor1] = useState(randomColor1);
+  const [color2, setColor2] = useState(randomColor2);
   const [direction, setDirection] = useState("left top");
   const [outputFormat, setOutputFormat] = useState("hex");
   const gradient = `${
     radial ? "-webkit-radial-gradient" : "-webkit-linear-gradient"
   }(${direction}, ${color1}, ${color2})`;
+  const hexToRgb = (hex) => {
+    var result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
+    if (result) {
+      var r = parseInt(result[1], 16);
+      var g = parseInt(result[2], 16);
+      var b = parseInt(result[3], 16);
+      return r + ", " + g + ", " + b;
+    }
+    return null;
+  };
+  const rgb1 = hexToRgb(color1);
+  const rgb2 = hexToRgb(color2);
+  const rgb = `${
+    radial ? "-webkit-radial-gradient" : "-webkit-linear-gradient"
+  }(${direction}, rgb(${rgb1}), rgb(${rgb2}));`;
   const getCSS = () => {
     setTextCSS(!textCSS);
     setTimeout(setTextCSS, 3000);
@@ -39,9 +58,14 @@ function App() {
     setTimeout(setTextLink, 3000);
   };
   const randomColors = () => {
-    setColor1("#" + Math.floor(Math.random() * 16777215).toString(16));
-    setColor2("#" + Math.floor(Math.random() * 16777215).toString(16));
+    setColor1(
+      `#${(Math.random() * 0xfffff * 1000000).toString(16).slice(0, 6)}`
+    );
+    setColor2(
+      `#${(Math.random() * 0xfffff * 1000000).toString(16).slice(0, 6)}`
+    );
   };
+
   return (
     <div className="content">
       <div className="sidebar">
@@ -149,7 +173,13 @@ function App() {
           </Button>
         </div>
         <div className="get-content">
-          <CopyToClipboard text={"background: " + gradient}>
+          <CopyToClipboard
+            text={
+              outputFormat === "hex"
+                ? "background: " + gradient
+                : "background: " + rgb
+            }
+          >
             <GetButton onClick={getCSS} id="get-css">
               {!textCSS ? "Get CSS" : "Yay! Copied to Clipboard!"}
             </GetButton>
@@ -160,9 +190,8 @@ function App() {
         </div>
         <Footer />
       </div>
-      <div className="gradient" style={{ background: gradient }}></div>
+      <div id="si" className="gradient" style={{ background: gradient }}></div>
     </div>
   );
 }
-
 export default App;

@@ -1,0 +1,25 @@
+.footer {
+  position: fixed;
+  display: block;
+  width: 260px;
+  bottom: 0;
+  left: 0;
+  padding: 30px 32px;
+  background: #fff;
+  z-index: 101;
+}
+
+.footer p {
+  color: #3d4853;
+  font-size: 0.8125rem;
+  font-weight: 500;
+  line-height: 1.1875rem;
+  margin-bottom: 19px;
+}
+
+.footer a {
+  color: #3d4853;
+  color: #3d4853;
+  text-decoration: none;
+  cursor: pointer;
+}

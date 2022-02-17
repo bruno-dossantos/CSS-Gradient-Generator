@@ -4,7 +4,6 @@ import Button from "./components/Button/Button.js";
 import Picker from "./components/Picker/Picker";
 import GetButton from "./components/GetButton/GetButton";
 import Footer from "./components/Footer/Footer";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { CopyToClipboard } from "react-copy-to-clipboard";
 import {
   ImArrowUpLeft2,
@@ -21,7 +20,6 @@ import { FiCircle } from "react-icons/fi";
 function App() {
   const randomColor1 = Math.floor(Math.random() * 16777215).toString(16);
   const randomColor2 = Math.floor(Math.random() * 16777215).toString(16);
-  const [darkMode, setDarkMode] = useState(true);
   const [textCSS, setTextCSS] = useState("");
   const [textLink, setTextLink] = useState("");
   const [radial, setRadial] = useState(true);

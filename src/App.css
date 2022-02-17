@@ -3,6 +3,7 @@
 body,
 html,
 button {
+  margin: 0;
   -webkit-user-select: none;
   -khtml-user-select: none;
   -moz-user-select: none;
@@ -35,7 +36,7 @@ h1.title {
   line-height: 1.75rem;
   margin: 0;
   cursor: pointer;
-  transition: color .2s ease-out;
+  transition: color 0.2s ease-out;
 }
 
 h1.title:hover {
@@ -81,8 +82,9 @@ span.label {
 }
 
 .gradient {
-  width: 100%;
+  width: -webkit-fill-available;
   height: 100%;
   position: absolute;
   z-index: -1;
+  margin-left: 320px;
 }

@@ -22,10 +22,11 @@ function App() {
   const randomColor2 = Math.floor(Math.random() * 16777215).toString(16);
   const [textCSS, setTextCSS] = useState("");
   const [textLink, setTextLink] = useState("");
-  const [radial, setRadial] = useState(true);
+  const [radial, setRadial] = useState(false);
   const [color1, setColor1] = useState("#" + randomColor1);
   const [color2, setColor2] = useState("#" + randomColor2);
   const [direction, setDirection] = useState("left top");
+  const [outputFormat, setOutputFormat] = useState("hex");
   const gradient = `${
     radial ? "-webkit-radial-gradient" : "-webkit-linear-gradient"
   }(${direction}, ${color1}, ${color2})`;
@@ -49,39 +50,74 @@ function App() {
         </div>
         <span className="label">Style</span>
         <div className="style-content">
-          <Button onClick={() => setRadial(false)}>Linear</Button>
-          <Button onClick={() => setRadial(true)}>Radial</Button>
+          <Button
+            id={radial === true ? "" : "selected"}
+            onClick={() => setRadial(false)}
+          >
+            Linear
+          </Button>
+          <Button
+            id={radial === true ? "selected" : ""}
+            onClick={() => setRadial(true)}
+          >
+            Radial
+          </Button>
         </div>
         <span className="label">Direction</span>
         <div className="direction-content">
-          <Button onClick={() => setDirection("left top")}>
+          <Button
+            id={direction === "left top" ? "selected" : ""}
+            onClick={() => setDirection("left top")}
+          >
             <ImArrowUpLeft2 />
           </Button>
-          <Button onClick={() => setDirection("top")}>
+          <Button
+            id={direction === "top" ? "selected" : ""}
+            onClick={() => setDirection("top")}
+          >
             <ImArrowUp2 />
           </Button>
-          <Button onClick={() => setDirection("right top")}>
+          <Button
+            id={direction === "right top" ? "selected" : ""}
+            onClick={() => setDirection("right top")}
+          >
             <ImArrowUpRight2 />
           </Button>
-          <Button onClick={() => setDirection("left")}>
+          <Button
+            id={direction === "left" ? "selected" : ""}
+            onClick={() => setDirection("left")}
+          >
             <ImArrowLeft2 />
           </Button>
           <Button
+            id={direction === "center" ? "selected" : ""}
             onClick={() => setDirection("center")}
             style={{ visibility: radial ? "visible" : "hidden" }}
           >
             <FiCircle />
           </Button>
-          <Button onClick={() => setDirection("right")}>
+          <Button
+            id={direction === "right" ? "selected" : ""}
+            onClick={() => setDirection("right")}
+          >
             <ImArrowRight2 />
           </Button>
-          <Button onClick={() => setDirection("left bottom")}>
+          <Button
+            id={direction === "left bottom" ? "selected" : ""}
+            onClick={() => setDirection("left bottom")}
+          >
             <ImArrowDownLeft2 />
           </Button>
-          <Button onClick={() => setDirection("bottom")}>
+          <Button
+            id={direction === "bottom" ? "selected" : ""}
+            onClick={() => setDirection("bottom")}
+          >
             <ImArrowDown2 />
           </Button>
-          <Button onClick={() => setDirection("right bottom")}>
+          <Button
+            id={direction === "right bottom" ? "selected" : ""}
+            onClick={() => setDirection("right bottom")}
+          >
             <ImArrowDownRight2 />
           </Button>
         </div>
@@ -99,8 +135,18 @@ function App() {
         </div>
         <span className="label">Output format</span>
         <div className="output-content">
-          <Button>Hex</Button>
-          <Button>Rgba</Button>
+          <Button
+            id={outputFormat === "hex" ? "selected" : ""}
+            onClick={() => setOutputFormat("hex")}
+          >
+            Hex
+          </Button>
+          <Button
+            id={outputFormat === "rgba" ? "selected" : ""}
+            onClick={() => setOutputFormat("rgba")}
+          >
+            Rgba
+          </Button>
         </div>
         <div className="get-content">
           <CopyToClipboard text={"background: " + gradient}>

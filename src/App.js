@@ -57,13 +57,13 @@ function App() {
           <Button onClick={() => setDirection("left top")}>
             <ImArrowUpLeft2 />
           </Button>
-          <Button onClick={() => setDirection("center top")}>
+          <Button onClick={() => setDirection("top")}>
             <ImArrowUp2 />
           </Button>
           <Button onClick={() => setDirection("right top")}>
             <ImArrowUpRight2 />
           </Button>
-          <Button onClick={() => setDirection("left center")}>
+          <Button onClick={() => setDirection("left")}>
             <ImArrowLeft2 />
           </Button>
           <Button
@@ -72,13 +72,13 @@ function App() {
           >
             <FiCircle />
           </Button>
-          <Button onClick={() => setDirection("right center")}>
+          <Button onClick={() => setDirection("right")}>
             <ImArrowRight2 />
           </Button>
           <Button onClick={() => setDirection("left bottom")}>
             <ImArrowDownLeft2 />
           </Button>
-          <Button onClick={() => setDirection("center bottom")}>
+          <Button onClick={() => setDirection("bottom")}>
             <ImArrowDown2 />
           </Button>
           <Button onClick={() => setDirection("right bottom")}>

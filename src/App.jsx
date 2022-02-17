@@ -1,6 +1,6 @@
 import { useState } from "react";
 import "./App.css";
-import Button from "./components/Button/Button.js";
+import Button from "./components/Button/Button";
 import Picker from "./components/Picker/Picker";
 import GetButton from "./components/GetButton/GetButton";
 import Footer from "./components/Footer/Footer";

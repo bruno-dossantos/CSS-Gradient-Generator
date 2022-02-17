@@ -6,7 +6,6 @@ import GetButton from "./components/GetButton/GetButton";
 import Footer from "./components/Footer/Footer";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { CopyToClipboard } from "react-copy-to-clipboard";
-import { faMoon } from "@fortawesome/free-solid-svg-icons";
 import {
   ImArrowUpLeft2,
   ImArrowUp2,
@@ -45,11 +44,6 @@ function App() {
       <div className="sidebar">
         <div className="content-header">
           <h1 className="title">CSS Gradient Generator</h1>
-          <div className={darkMode ? "dark-mode" : "ligth-mode"}>
-            <span onClick={() => setDarkMode(!darkMode)}>
-              <FontAwesomeIcon className="moon" icon={faMoon} />
-            </span>
-          </div>
         </div>
         <span className="label">Style</span>
         <div className="style-content">
@@ -94,12 +88,10 @@ function App() {
           <Picker
             value={color1}
             onChange={(e) => setColor1(e.target.value)}
-            id="a"
           ></Picker>
           <Picker
             value={color2}
             onChange={(e) => setColor2(e.target.value)}
-            id="b"
           ></Picker>
           <Button>Random</Button>
         </div>
@@ -109,12 +101,11 @@ function App() {
           <Button>Rgba</Button>
         </div>
         <div className="get-content">
-          <CopyToClipboard text={'background: ' + gradient}>
+          <CopyToClipboard text={"background: " + gradient}>
             <GetButton onClick={getCSS} id="get-css">
               {!textCSS ? "Get CSS" : "Yay! Copied to Clipboard!"}
             </GetButton>
           </CopyToClipboard>
-
           <GetButton onClick={getLink} id="get-link">
             {!textLink ? "Get Share Link" : "Yay! Copied to Clipboard!"}
           </GetButton>

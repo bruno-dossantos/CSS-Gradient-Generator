@@ -1,0 +1,18 @@
+.picker {
+  display: inline-block;
+  margin-top: 4px;
+  margin-left: 8px;
+  width: 80px;
+  height: 32px;
+  border: 2px solid #f1f4f8;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+input[type="color"]::-webkit-color-swatch-wrapper {
+  padding: 0;
+}
+
+input[type="color"]::-webkit-color-swatch {
+  border-radius: 6px;
+}

@@ -37,6 +37,10 @@ function App() {
     setTextLink(!textLink);
     setTimeout(setTextLink, 3000);
   };
+  const randomColors = () => {
+    setColor1("#" + Math.floor(Math.random() * 16777215).toString(16));
+    setColor2("#" + Math.floor(Math.random() * 16777215).toString(16));
+  };
   return (
     <div className="content">
       <div className="sidebar">
@@ -91,7 +95,7 @@ function App() {
             value={color2}
             onChange={(e) => setColor2(e.target.value)}
           ></Picker>
-          <Button>Random</Button>
+          <Button onClick={randomColors}>Random</Button>
         </div>
         <span className="label">Output format</span>
         <div className="output-content">

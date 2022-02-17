@@ -5,6 +5,7 @@ import Picker from "./components/Picker/Picker";
 import GetButton from "./components/GetButton/GetButton";
 import Footer from "./components/Footer/Footer";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { CopyToClipboard } from "react-copy-to-clipboard";
 import { faMoon } from "@fortawesome/free-solid-svg-icons";
 import {
   ImArrowUpLeft2,
@@ -28,11 +29,14 @@ function App() {
   const [color1, setColor1] = useState("#" + randomColor1);
   const [color2, setColor2] = useState("#" + randomColor2);
   const [direction, setDirection] = useState("left top");
-  const textGetCSS = () => {
+  const gradient = `${
+    radial ? "-webkit-radial-gradient" : "-webkit-linear-gradient"
+  }(${direction}, ${color1}, ${color2})`;
+  const getCSS = () => {
     setTextCSS(!textCSS);
     setTimeout(setTextCSS, 3000);
   };
-  const textGetLink = () => {
+  const getLink = () => {
     setTextLink(!textLink);
     setTimeout(setTextLink, 3000);
   };
@@ -105,23 +109,19 @@ function App() {
           <Button>Rgba</Button>
         </div>
         <div className="get-content">
-          <GetButton onClick={textGetCSS} id="get-css">
-            {!textCSS ? "Get CSS" : "Yay! Copied to Clipboard!"}
-          </GetButton>
-          <GetButton onClick={textGetLink} id="get-link">
+          <CopyToClipboard text={'background: ' + gradient}>
+            <GetButton onClick={getCSS} id="get-css">
+              {!textCSS ? "Get CSS" : "Yay! Copied to Clipboard!"}
+            </GetButton>
+          </CopyToClipboard>
+
+          <GetButton onClick={getLink} id="get-link">
             {!textLink ? "Get Share Link" : "Yay! Copied to Clipboard!"}
           </GetButton>
         </div>
         <Footer />
       </div>
-      <div
-        className="gradient"
-        style={{
-          background: `${
-            radial ? "-webkit-radial-gradient" : "-webkit-linear-gradient"
-          }(${direction}, ${color1}, ${color2})`,
-        }}
-      ></div>
+      <div className="gradient" style={{ background: gradient }}></div>
     </div>
   );
 }

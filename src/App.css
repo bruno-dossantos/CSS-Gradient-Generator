@@ -73,3 +73,10 @@ span.label {
 .colors-content {
   display: flex;
 }
+
+.gradient {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  z-index: -1;
+}

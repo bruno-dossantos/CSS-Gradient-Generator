@@ -19,10 +19,15 @@ import {
 import { FiCircle } from "react-icons/fi";
 
 function App() {
+  const randomColor1 = Math.floor(Math.random() * 16777215).toString(16);
+  const randomColor2 = Math.floor(Math.random() * 16777215).toString(16);
   const [darkMode, setDarkMode] = useState(true);
-  const [radial, setRadial] = useState(true);
   const [textCSS, setTextCSS] = useState("");
   const [textLink, setTextLink] = useState("");
+  const [radial, setRadial] = useState(true);
+  const [color1, setColor1] = useState("#" + randomColor1);
+  const [color2, setColor2] = useState("#" + randomColor2);
+  const [direction, setDirection] = useState("left top");
   const textGetCSS = () => {
     setTextCSS(!textCSS);
     setTimeout(setTextCSS, 3000);
@@ -44,43 +49,54 @@ function App() {
         </div>
         <span className="label">Style</span>
         <div className="style-content">
-          <Button>Linear</Button>
-          <Button onClick={() => setRadial(!radial)}>Radial</Button>
+          <Button onClick={() => setRadial(false)}>Linear</Button>
+          <Button onClick={() => setRadial(true)}>Radial</Button>
         </div>
         <span className="label">Direction</span>
         <div className="direction-content">
-          <Button>
+          <Button onClick={() => setDirection("left top")}>
             <ImArrowUpLeft2 />
           </Button>
-          <Button>
+          <Button onClick={() => setDirection("center top")}>
             <ImArrowUp2 />
           </Button>
-          <Button>
+          <Button onClick={() => setDirection("right top")}>
             <ImArrowUpRight2 />
           </Button>
-          <Button>
+          <Button onClick={() => setDirection("left center")}>
             <ImArrowLeft2 />
           </Button>
-          <Button style={{ visibility: radial ? "visible" : "hidden" }}>
+          <Button
+            onClick={() => setDirection("center")}
+            style={{ visibility: radial ? "visible" : "hidden" }}
+          >
             <FiCircle />
           </Button>
-          <Button>
+          <Button onClick={() => setDirection("right center")}>
             <ImArrowRight2 />
           </Button>
-          <Button>
+          <Button onClick={() => setDirection("left bottom")}>
             <ImArrowDownLeft2 />
           </Button>
-          <Button>
+          <Button onClick={() => setDirection("center bottom")}>
             <ImArrowDown2 />
           </Button>
-          <Button>
+          <Button onClick={() => setDirection("right bottom")}>
             <ImArrowDownRight2 />
           </Button>
         </div>
         <span className="label">Colors</span>
         <div className="colors-content">
-          <Picker id="a"></Picker>
-          <Picker id="b"></Picker>
+          <Picker
+            value={color1}
+            onChange={(e) => setColor1(e.target.value)}
+            id="a"
+          ></Picker>
+          <Picker
+            value={color2}
+            onChange={(e) => setColor2(e.target.value)}
+            id="b"
+          ></Picker>
           <Button>Random</Button>
         </div>
         <span className="label">Output format</span>
@@ -98,6 +114,14 @@ function App() {
         </div>
         <Footer />
       </div>
+      <div
+        className="gradient"
+        style={{
+          background: `${
+            radial ? "-webkit-radial-gradient" : "-webkit-linear-gradient"
+          }(${direction}, ${color1}, ${color2})`,
+        }}
+      ></div>
     </div>
   );
 }

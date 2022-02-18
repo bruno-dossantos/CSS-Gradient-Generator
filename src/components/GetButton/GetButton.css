@@ -1,0 +1,20 @@
+.get-btn {
+  margin-left: 0;
+  width: 256px;
+  height: 48px;
+  background: #f1f4f8;
+  border: none;
+  border-radius: 6px;
+  font-size: 0.8125rem;
+  line-height: 3rem;
+  color: #3d4853;
+  font-weight: 600;
+  cursor: pointer;
+  margin-top: 48px;
+}
+
+.get-btn:hover {
+  background: #3d4853;
+  color: #fff;
+  box-shadow: 0 7px 14px rgb(50 50 93 / 10%), 0 3px 6px rgb(0 0 0 / 8%);
+}

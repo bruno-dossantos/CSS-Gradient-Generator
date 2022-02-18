@@ -30,6 +30,17 @@ function App() {
   const [color1, setColor1] = useState(randomColor1);
   const [color2, setColor2] = useState(randomColor2);
   const [direction, setDirection] = useState("left top");
+  const directions = {
+    TopLeft: "top left",
+    Top: "top",
+    TopRight: "top right",
+    Left: "left",
+    Center: "center",
+    Right: "right",
+    LeftBottom: "left bottom",
+    Bottom: "bottom",
+    RightBottom: "right bottom",
+  };
   const [outputFormat, setOutputFormat] = useState("hex");
   const gradient = `${
     radial ? "-webkit-radial-gradient" : "-webkit-linear-gradient"
@@ -65,7 +76,6 @@ function App() {
       `#${(Math.random() * 0xfffff * 1000000).toString(16).slice(0, 6)}`
     );
   };
-
   return (
     <div className="content">
       <div className="sidebar">
@@ -91,56 +101,56 @@ function App() {
         <div className="direction-content">
           <Button
             id={direction === "left top" ? "selected" : ""}
-            onClick={() => setDirection("left top")}
+            onClick={() => setDirection(directions.TopLeft)}
           >
             <ImArrowUpLeft2 />
           </Button>
           <Button
             id={direction === "top" ? "selected" : ""}
-            onClick={() => setDirection("top")}
+            onClick={() => setDirection(directions.Top)}
           >
             <ImArrowUp2 />
           </Button>
           <Button
             id={direction === "right top" ? "selected" : ""}
-            onClick={() => setDirection("right top")}
+            onClick={() => setDirection(directions.TopRight)}
           >
             <ImArrowUpRight2 />
           </Button>
           <Button
             id={direction === "left" ? "selected" : ""}
-            onClick={() => setDirection("left")}
+            onClick={() => setDirection(directions.Left)}
           >
             <ImArrowLeft2 />
           </Button>
           <Button
             id={direction === "center" ? "selected" : ""}
-            onClick={() => setDirection("center")}
+            onClick={() => setDirection(directions.Center)}
             style={{ visibility: radial ? "visible" : "hidden" }}
           >
             <FiCircle />
           </Button>
           <Button
             id={direction === "right" ? "selected" : ""}
-            onClick={() => setDirection("right")}
+            onClick={() => setDirection(directions.Right)}
           >
             <ImArrowRight2 />
           </Button>
           <Button
             id={direction === "left bottom" ? "selected" : ""}
-            onClick={() => setDirection("left bottom")}
+            onClick={() => setDirection(directions.LeftBottom)}
           >
             <ImArrowDownLeft2 />
           </Button>
           <Button
             id={direction === "bottom" ? "selected" : ""}
-            onClick={() => setDirection("bottom")}
+            onClick={() => setDirection(directions.Bottom)}
           >
             <ImArrowDown2 />
           </Button>
           <Button
             id={direction === "right bottom" ? "selected" : ""}
-            onClick={() => setDirection("right bottom")}
+            onClick={() => setDirection(directions.RightBottom)}
           >
             <ImArrowDownRight2 />
           </Button>

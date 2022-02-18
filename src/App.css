@@ -43,12 +43,6 @@ h1.title:hover {
   color: #999999;
 }
 
-.moon {
-  color: #3d4853;
-  cursor: pointer;
-  transform: rotate(-25deg);
-}
-
 .btn:nth-child(1),
 .btn:nth-child(4),
 .btn:nth-child(7),
@@ -58,15 +52,6 @@ h1.title:hover {
 
 #selected {
   background: #f1f4f8;
-}
-
-#get-css {
-  margin-top: 48px;
-}
-
-#get-link {
-  margin-top: 12px;
-  margin-bottom: 136px;
 }
 
 span.label {

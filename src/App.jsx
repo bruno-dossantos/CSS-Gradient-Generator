@@ -25,7 +25,6 @@ function App() {
     .toString(16)
     .slice(0, 6)}`;
   const [textCSS, setTextCSS] = useState("");
-  const [textLink, setTextLink] = useState("");
   const [radial, setRadial] = useState(false);
   const [color1, setColor1] = useState(randomColor1);
   const [color2, setColor2] = useState(randomColor2);
@@ -42,7 +41,7 @@ function App() {
     RightBottom: "right bottom",
   };
   const [outputFormat, setOutputFormat] = useState("hex");
-  const gradient = `${
+  const gradientHex = `${
     radial ? "-webkit-radial-gradient" : "-webkit-linear-gradient"
   }(${direction}, ${color1}, ${color2})`;
   const hexToRgb = (hex) => {
@@ -57,16 +56,12 @@ function App() {
   };
   const rgb1 = hexToRgb(color1);
   const rgb2 = hexToRgb(color2);
-  const rgb = `${
+  const gradientRgb = `${
     radial ? "-webkit-radial-gradient" : "-webkit-linear-gradient"
   }(${direction}, rgb(${rgb1}), rgb(${rgb2}));`;
   const getCSS = () => {
     setTextCSS(!textCSS);
     setTimeout(setTextCSS, 3000);
-  };
-  const getLink = () => {
-    setTextLink(!textLink);
-    setTimeout(setTextLink, 3000);
   };
   const randomColors = () => {
     setColor1(
@@ -85,13 +80,13 @@ function App() {
         <span className="label">Style</span>
         <div className="style-content">
           <Button
-            id={radial === true ? "" : "selected"}
+            id={radial ? "" : "selected"}
             onClick={() => setRadial(false)}
           >
             Linear
           </Button>
           <Button
-            id={radial === true ? "selected" : ""}
+            id={radial ? "selected" : ""}
             onClick={() => setRadial(true)}
           >
             Radial
@@ -186,21 +181,18 @@ function App() {
           <CopyToClipboard
             text={
               outputFormat === "hex"
-                ? "background: " + gradient
-                : "background: " + rgb
+                ? "background: " + gradientHex
+                : "background: " + gradientRgb
             }
           >
-            <GetButton onClick={getCSS} id="get-css">
+            <GetButton onClick={getCSS}>
               {!textCSS ? "Get CSS" : "Yay! Copied to Clipboard!"}
             </GetButton>
           </CopyToClipboard>
-          <GetButton onClick={getLink} id="get-link">
-            {!textLink ? "Get Share Link" : "Yay! Copied to Clipboard!"}
-          </GetButton>
         </div>
         <Footer />
       </div>
-      <div id="si" className="gradient" style={{ background: gradient }}></div>
+      <div className="gradient" style={{ background: gradientHex }}></div>
     </div>
   );
 }
